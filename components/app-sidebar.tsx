@@ -26,7 +26,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
     <Sidebar className="group-data-[side=left]:border-r-0">
       <SidebarHeader>
         <SidebarMenu>
-          <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row justify-between items-center ">
             <Link
               href="/"
               onClick={() => {
@@ -34,8 +34,8 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               }}
               className="flex flex-row gap-3 items-center"
             >
-              <span className="text-lg font-semibold px-2 hover:bg-muted rounded-md cursor-pointer">
-                Chatbot
+              <span className="text-xl font-semibold px-2 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 rounded-md cursor-pointer text-transparent bg-clip-text">
+                LurenA.I
               </span>
             </Link>
             <Tooltip>

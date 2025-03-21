@@ -222,11 +222,11 @@ function PureMultimodalInput({
       <Textarea
         data-testid="multimodal-input"
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder="What's in your mind..."
         value={input}
         onChange={handleInput}
         className={cx(
-          'min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base bg-muted pb-10 dark:border-zinc-700',
+          'min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base bg-muted pb-10 ',
           className,
         )}
         rows={2}
@@ -252,7 +252,7 @@ function PureMultimodalInput({
         <AttachmentsButton fileInputRef={fileInputRef} status={status} />
       </div>
 
-      <div className="absolute bottom-0 right-0 p-2 w-fit flex flex-row justify-end">
+      <div className="absolute bottom-0  right-0 p-2 w-fit flex flex-row justify-end">
         {status === 'submitted' ? (
           <StopButton stop={stop} setMessages={setMessages} />
         ) : (
@@ -288,7 +288,7 @@ function PureAttachmentsButton({
   return (
     <Button
       data-testid="attachments-button"
-      className="rounded-md rounded-bl-lg p-[7px] h-fit dark:border-zinc-700 hover:dark:bg-zinc-900 hover:bg-zinc-200"
+      className="rounded-md text-gray-600 rounded-bl-lg p-[7px] h-fit dark:border-zinc-700 "
       onClick={(event) => {
         event.preventDefault();
         fileInputRef.current?.click();
@@ -313,14 +313,14 @@ function PureStopButton({
   return (
     <Button
       data-testid="stop-button"
-      className="rounded-full p-1.5 h-fit border dark:border-zinc-600"
+      className=" w-8 h-8 bg-purple-900 text-white hover:text-white rounded-xl  p-1.5 border dark:border-zinc-600"
       onClick={(event) => {
         event.preventDefault();
         stop();
         setMessages((messages) => messages);
       }}
     >
-      <StopIcon size={14} />
+      <StopIcon size={14}  />
     </Button>
   );
 }
@@ -339,7 +339,7 @@ function PureSendButton({
   return (
     <Button
       data-testid="send-button"
-      className="rounded-full p-1.5 h-fit border dark:border-zinc-600"
+      className=" w-8 h-8 bg-purple-900 text-white hover:bg-purple-600 rounded-xl p-1.5  border "
       onClick={(event) => {
         event.preventDefault();
         submitForm();
@@ -348,7 +348,10 @@ function PureSendButton({
     >
       <ArrowUpIcon size={14} />
     </Button>
+   
   );
+
+ 
 }
 
 const SendButton = memo(PureSendButton, (prevProps, nextProps) => {
