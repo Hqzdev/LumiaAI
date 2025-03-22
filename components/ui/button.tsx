@@ -11,11 +11,11 @@ const buttonVariants = cva(
       variant: {
         default: 'text-primary hover:text-purple-600', // Меняем текст на purple-600 при наведении
         destructive:
-          'text-destructive-foreground hover:text-purple-600', // Меняем текст на purple-600 при наведении
+          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline:
-          ' bg-background hover:text-purple-600', // Меняем текст на purple-600 при наведении
+          'bg-background hover:text-purple-600', // Меняем текст на purple-600 при наведении
         secondary:
-          'text-secondary-foreground hover:text-purple-600', // Меняем текст на purple-600 при наведении
+          'bg-secondary text-secondary-foreground hover:text-purple-600', // Меняем текст на purple-600 при наведении
         ghost: 'hover:text-purple-600', // Меняем текст на purple-600 при наведении
         link: 'text-primary underline-offset-4 hover:underline hover:text-purple-600', // Меняем текст на purple-600 при наведении
       },

@@ -39,7 +39,7 @@ export function PureMessageActions({
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              className="py-1 px-2 h-fit text-muted-foreground"
+              className="py-1 px-2 h-fit text-muted-foreground rounded-[20px] border-0"
               variant="outline"
               onClick={async () => {
                 const textFromParts = message.parts
@@ -67,7 +67,7 @@ export function PureMessageActions({
           <TooltipTrigger asChild>
             <Button
               data-testid="message-upvote"
-              className="py-1 px-2 h-fit text-muted-foreground !pointer-events-auto"
+              className="py-1 px-2 h-fit text-muted-foreground rounded-[20px] border-0 !pointer-events-auto"
               disabled={vote?.isUpvoted}
               variant="outline"
               onClick={async () => {
@@ -120,7 +120,7 @@ export function PureMessageActions({
           <TooltipTrigger asChild>
             <Button
               data-testid="message-downvote"
-              className="py-1 px-2 h-fit text-muted-foreground !pointer-events-auto"
+              className="py-1 px-2 h-fit text-muted-foreground rounded-[20px] border-0 !pointer-events-auto"
               variant="outline"
               disabled={vote && !vote.isUpvoted}
               onClick={async () => {

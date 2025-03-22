@@ -189,7 +189,7 @@ const Sidebar = React.forwardRef<
       return (
         <div
           className={cn(
-            'flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground px-4 py-6',
+            'flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground',
             className,
           )}
           ref={ref}
@@ -413,7 +413,6 @@ const SidebarContent = React.forwardRef<
       data-sidebar="content"
       className={cn(
         'flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden',
-        'pl-4 pt-4 pb-4', // Добавляем отступы
         className,
       )}
       {...props}

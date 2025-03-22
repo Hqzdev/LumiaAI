@@ -58,7 +58,7 @@ export default function Page() {
       <AnimatedGradient />
       <FloatingElements />
       
-      <div className="w-full max-w-md overflow-hidden rounded-[20px] backdrop-blur-sm border border-gray-600 flex flex-col gap-12 p-6 z-10 transition-all duration-300">
+      <div className="w-full max-w-md overflow-hidden rounded-[20px] border border-gray-300 bg-white/80 backdrop-blur-lg  flex flex-col gap-12 p-6 z-10 transition-all duration-300">
         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
           <h3 className="text-xl font-semibold text-gray-900">Sign In</h3>
           <p className="text-sm text-gray-500">
