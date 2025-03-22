@@ -111,7 +111,9 @@ export function PureMessageActions({
                   });
                 }}
               >
-                <ThumbsUp className={`h-4 w-4 ${vote?.isUpvoted ? 'fill-current' : ''}`} />
+                <ThumbsUp
+                  className={`h-4 w-4 ${vote?.isUpvoted ? 'fill-current' : ''}`}
+                />
               </Button>
             </TooltipTrigger>
             <TooltipContent>Upvote</TooltipContent>
@@ -164,7 +166,9 @@ export function PureMessageActions({
                   });
                 }}
               >
-                <ThumbsDown className={`h-4 w-4 ${vote?.isDownvoted ? 'fill-current' : ''}`} />
+                <ThumbsDown
+                  className={`h-4 w-4 ${vote?.isDownvoted ? 'fill-current' : ''}`}
+                />
               </Button>
             </TooltipTrigger>
             <TooltipContent>Downvote</TooltipContent>
