@@ -7,8 +7,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://chat.vercel.ai'),
-  title: 'Next.js Luren A.I Template',
-  description: 'Next.js Luren A.I template using the AI SDK.',
+  title: 'Luren A.I',
+  description: 'The strongest A.I assistant',
 };
 
 export const viewport = {
