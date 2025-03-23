@@ -24,7 +24,7 @@
 
 @layer base {
     :root {
-        --background: 10 30% 96%;
+        --background: 0 0% 100%;
         --foreground: 240 10% 3.9%;
         --card: 0 0% 100%;
         --card-foreground: 240 10% 3.9%;
@@ -161,5 +161,5 @@
 }
 
 .suggestion-highlight {
-    @apply bg-blue-200 hover:bg-blue-300 dark:hover:bg-blue-400/50 dark:text-blue-50 dark:bg-blue-500/40;
+    @apply bg-purple-200 hover:bg-purple-300 dark:hover:bg-purple-400/50 dark:text-purple-50 dark:bg-purple-500/40;
 }
