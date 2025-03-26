@@ -40,14 +40,14 @@ export function PureMessageActions({
     <TooltipProvider delayDuration={0}>
       <div
         className={cn(
-          'w-[120px] inline-flex flex-row bg-gray-200 rounded-full p-1 -gap-1 justify-between',
+          'w-[120px] inline-flex flex-row bg-black/5 rounded-full p-1 -gap-1 justify-between',
           className,
         )}
       >
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent hover:text-purple-600"
+              className="py-1 px-2 h-fit text-gray-600 hover:text-purple-600"
               variant="ghost"
               onClick={async () => {
                 const textFromParts = message.parts

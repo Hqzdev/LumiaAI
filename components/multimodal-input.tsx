@@ -23,7 +23,7 @@ import { Textarea } from './ui/textarea';
 import { SuggestedActions } from './suggested-actions';
 import equal from 'fast-deep-equal';
 import { UseChatHelpers, UseChatOptions } from '@ai-sdk/react';
-import { Files } from 'lucide-react';
+import { Paperclip, Search, Lightbulb } from 'lucide-react';
 
 function PureMultimodalInput({
   chatId,
@@ -181,7 +181,7 @@ function PureMultimodalInput({
   );
 
   return (
-    <div className="relative w-full flex flex-col gap-4">
+    <div className="relative w-full flex rounded-2xl flex-col gap-4 shadow-[0_0_15px_rgba(0,0,0,0.1)]">
       {messages.length === 0 &&
         attachments.length === 0 &&
         uploadQueue.length === 0 && (
@@ -227,7 +227,7 @@ function PureMultimodalInput({
         value={input}
         onChange={handleInput}
         className={cx(
-          'min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base bg-muted pb-10',
+          'min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base bg-muted pb-10 border-0',
           className,
         )}
         rows={2}
@@ -249,11 +249,7 @@ function PureMultimodalInput({
         }}
       />
 
-      <div className="absolute bottom-0 p-2 w-fit flex flex-row justify-start">
-        <AttachmentsButton fileInputRef={fileInputRef} status={status} />
-      </div>
-
-      <div className="absolute bottom-0 right-0 p-2 w-fit flex flex-row justify-end">
+      <div className="absolute top-2 right-2">
         {status === 'submitted' ? (
           <StopButton stop={stop} setMessages={setMessages} />
         ) : (
@@ -263,6 +259,42 @@ function PureMultimodalInput({
             uploadQueue={uploadQueue}
           />
         )}
+      </div>
+
+      <div className="absolute bottom-0 p-2 w-full flex flex-row justify-between items-center">
+        <div className="flex gap-2">
+          <AttachmentsButton fileInputRef={fileInputRef} status={status} />
+
+          <Button
+            className="rounded-md p-[7px] h-fit text-gray-500 group"
+            variant="ghost"
+            onClick={() => {
+              toast.info('Search functionality coming soon!');
+            }}
+          >
+            <div className="group-hover:text-purple-600 group-hover:scale-110 transition-all">
+              <Search className="size-10 group-hover:text-purple-600" />
+            </div>
+            <span className="group-hover:text-purple-600 transition-all">
+              Search
+            </span>
+          </Button>
+
+          <Button
+            className="rounded-md p-[7px] h-fit text-gray-500 group"
+            variant="ghost"
+            onClick={() => {
+              toast.info('Deep search functionality coming soon!');
+            }}
+          >
+            <div className="group-hover:text-purple-600 group-hover:scale-110 transition-all">
+              <Lightbulb className="size-10 group-hover:text-purple-600" />
+            </div>
+            <span className="group-hover:text-purple-600 transition-all">
+              Justify
+            </span>
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -289,7 +321,7 @@ function PureAttachmentsButton({
   return (
     <Button
       data-testid="attachments-button"
-      className="rounded-md rounded-bl-lg p-[7px] h-fit dark:border-zinc-700 text-gray-500"
+      className="rounded-md rounded-bl-lg p-[7px] h-fit dark:border-zinc-700 text-gray-500 group"
       onClick={(event) => {
         event.preventDefault();
         fileInputRef.current?.click();
@@ -297,7 +329,10 @@ function PureAttachmentsButton({
       disabled={status !== 'ready'}
       variant="ghost"
     >
-      <Files className="size-10" />
+      <div className="group-hover:text-purple-600 group-hover:scale-110 transition-all">
+        <Paperclip className="size-10 group-hover:text-purple-600" />
+      </div>
+      <span className="group-hover:text-purple-600 transition-all">Attach</span>
     </Button>
   );
 }
@@ -314,7 +349,7 @@ function PureStopButton({
   return (
     <Button
       data-testid="stop-button"
-      className="rounded-full p-1.5 h-fit bg-purple-600 text-white"
+      className="rounded-full p-1.5 h-fit bg-black text-white"
       onClick={(event) => {
         event.preventDefault();
         stop();
@@ -340,7 +375,7 @@ function PureSendButton({
   return (
     <Button
       data-testid="send-button"
-      className="rounded-full bg-purple-600 text-white p-1.5 h-fit"
+      className="rounded-full bg-black  bg-black text-white p-1.5 h-fit"
       onClick={(event) => {
         event.preventDefault();
         submitForm();
