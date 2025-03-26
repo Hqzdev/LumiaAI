@@ -4,15 +4,15 @@
 
 :root {
     --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
+    --background-start-rgb: 255, 255, 255;
     --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
+        --background-start-rgb: 255, 255, 255;
+        --background-end-rgb: 255, 255, 255;
     }
 }
 
@@ -60,7 +60,7 @@
     }
 
     .dark {
-        --background: #f8f3f2;
+        --background: 0 0% 100%;
         --foreground: 0 0% 98%;
         --card: 240 10% 3.9%;
         --card-foreground: 0 0% 98%;
@@ -70,7 +70,7 @@
         --primary-foreground: 240 5.9% 10%;
         --secondary: 240 3.7% 15.9%;
         --secondary-foreground: 0 0% 98%;
-        --muted: 240 3.7% 15.9%;
+        --muted: 0 0% 100%;
         --muted-foreground: 240 5% 64.9%;
         --accent: 240 3.7% 15.9%;
         --accent-foreground: 0 0% 98%;

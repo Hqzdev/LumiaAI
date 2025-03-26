@@ -1,7 +1,8 @@
 {
-  "name": "ai-Luren A.I",
+  "name": "ai-luren-a.i",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "tsx lib/db/migrate && next build",
@@ -105,5 +106,23 @@
     "tsx": "^4.19.1",
     "typescript": "^5.6.3"
   },
-  "packageManager": "pnpm@9.12.3"
+  "packageManager": "pnpm@9.12.3",
+  "description": "<a href=\"https://chat.vercel.ai/\">   <img alt=\"Next.js 14 and App Router-ready AI Luren A.I.\" src=\"app/(chat)/opengraph-image.png\">   <h1 align=\"center\">Next.js AI Luren A.I</h1> </a>",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hqzdev/nextjs-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hqzdev/nextjs-ai/issues"
+  },
+  "homepage": "https://github.com/Hqzdev/nextjs-ai#readme"
 }

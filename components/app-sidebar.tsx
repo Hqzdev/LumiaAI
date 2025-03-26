@@ -34,7 +34,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               }}
               className="flex flex-row gap-3 items-center"
             >
-              <span className="text-xl font-semibold px-2 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-transparent bg-clip-text rounded-md cursor-pointer">
+              <span className="text-xl font-semibold px-2 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text rounded-md cursor-pointer">
                 Luren A.I+
               </span>
             </Link>

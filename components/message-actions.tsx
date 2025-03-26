@@ -4,7 +4,6 @@ import { useCopyToClipboard } from 'usehooks-ts';
 
 import type { Vote } from '@/lib/db/schema';
 
-import { CopyIcon, ThumbDownIcon, ThumbUpIcon } from './icons';
 import { Button } from './ui/button';
 import {
   Tooltip,
@@ -15,17 +14,21 @@ import {
 import { memo } from 'react';
 import equal from 'fast-deep-equal';
 import { toast } from 'sonner';
+import { Copy, ThumbsUp, ThumbsDown } from 'lucide-react';
+import cn from 'classnames';
 
 export function PureMessageActions({
   chatId,
   message,
   vote,
   isLoading,
+  className,
 }: {
   chatId: string;
   message: Message;
   vote: Vote | undefined;
   isLoading: boolean;
+  className?: string;
 }) {
   const { mutate } = useSWRConfig();
   const [_, copyToClipboard] = useCopyToClipboard();
@@ -35,12 +38,17 @@ export function PureMessageActions({
 
   return (
     <TooltipProvider delayDuration={0}>
-      <div className="flex flex-row gap-2">
+      <div
+        className={cn(
+          'w-[120px] inline-flex flex-row bg-gray-200 rounded-full p-1 -gap-1 justify-between',
+          className,
+        )}
+      >
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              className="py-1 px-2 h-fit text-muted-foreground"
-              variant="outline"
+              className="py-1 px-2 h-fit text-muted-foreground  hover:bg-transparent"
+              variant="ghost"
               onClick={async () => {
                 const textFromParts = message.parts
                   ?.filter((part) => part.type === 'text')
@@ -48,28 +56,29 @@ export function PureMessageActions({
                   .join('\n')
                   .trim();
 
-                if (!textFromParts) {
+                if (textFromParts) {
+                  await copyToClipboard(textFromParts);
+                  toast.success('Copied to clipboard!');
+                } else {
                   toast.error("There's no text to copy!");
-                  return;
                 }
-
-                await copyToClipboard(textFromParts);
-                toast.success('Copied to clipboard!');
               }}
             >
-              <CopyIcon />
+              <Copy className="h-3.5 w-3.5 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Copy</TooltipContent>
+          <TooltipContent>Copy message</TooltipContent>
         </Tooltip>
+
+        <div className="w-px h-4 bg-gray-300 my-auto" />
 
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
               data-testid="message-upvote"
-              className="py-1 px-2 h-fit text-muted-foreground !pointer-events-auto"
+              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent !pointer-events-auto"
               disabled={vote?.isUpvoted}
-              variant="outline"
+              variant="ghost"
               onClick={async () => {
                 const upvote = fetch('/api/vote', {
                   method: 'PATCH',
@@ -110,18 +119,20 @@ export function PureMessageActions({
                 });
               }}
             >
-              <ThumbUpIcon />
+              <ThumbsUp className="h-3.5 w-3.5 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Upvote Response</TooltipContent>
+          <TooltipContent>Upvote</TooltipContent>
         </Tooltip>
+
+        <div className="w-px h-5 bg-gray-300 my-auto" />
 
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
               data-testid="message-downvote"
-              className="py-1 px-2 h-fit text-muted-foreground !pointer-events-auto"
-              variant="outline"
+              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent !pointer-events-auto"
+              variant="ghost"
               disabled={vote && !vote.isUpvoted}
               onClick={async () => {
                 const downvote = fetch('/api/vote', {
@@ -163,10 +174,10 @@ export function PureMessageActions({
                 });
               }}
             >
-              <ThumbDownIcon />
+              <ThumbsDown className="h-3.5 w-3.5 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Downvote Response</TooltipContent>
+          <TooltipContent>Downvote</TooltipContent>
         </Tooltip>
       </div>
     </TooltipProvider>

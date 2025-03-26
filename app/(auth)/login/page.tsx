@@ -28,7 +28,7 @@ export default function Page() {
 
   useEffect(() => {
     setMounted(true);
-    
+
     if (state.status === 'failed') {
       toast({
         type: 'error',
@@ -57,16 +57,21 @@ export default function Page() {
       {/* Animated background */}
       <AnimatedGradient />
       <FloatingElements />
-      
-      <div className="w-full max-w-md overflow-hidden rounded-[20px] border border-gray-300 bg-white/80 backdrop-blur-lg  flex flex-col gap-12 p-6 z-10 transition-all duration-300">
+
+      <div className="w-full max-w-md overflow-hidden rounded-[20px] shadow-lg bg-white/80 backdrop-blur-lg  flex flex-col gap-12 p-6 z-10 transition-all duration-300">
         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
           <h3 className="text-xl font-semibold text-gray-900">Sign In</h3>
           <p className="text-sm text-gray-500">
-            Use your email and <span className='text-purple-600 font-medium'>password</span> to sign in
+            Use your email and{' '}
+            <span className="text-purple-600 font-medium">password</span> to
+            sign in
           </p>
         </div>
         <AuthForm action={handleSubmit} defaultEmail={email}>
-          <SubmitButton isSuccessful={isSuccessful} className="bg-purple-600 hover:bg-purple-700 transition-all duration-200 transform hover:scale-[1.02]">
+          <SubmitButton
+            isSuccessful={isSuccessful}
+            className="text-purple-600 hover:text-purple-600 transition-all duration-200 transform hover:scale-[1.1]"
+          >
             Sign in
           </SubmitButton>
           <p className="text-center text-sm text-gray-600 mt-4">
