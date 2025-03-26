@@ -14,7 +14,7 @@ import {
 import { memo } from 'react';
 import equal from 'fast-deep-equal';
 import { toast } from 'sonner';
-import { Copy, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Files, ThumbsUp, ThumbsDown } from 'lucide-react';
 import cn from 'classnames';
 
 export function PureMessageActions({
@@ -47,7 +47,7 @@ export function PureMessageActions({
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              className="py-1 px-2 h-fit text-muted-foreground  hover:bg-transparent"
+              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent hover:text-purple-600"
               variant="ghost"
               onClick={async () => {
                 const textFromParts = message.parts
@@ -64,7 +64,7 @@ export function PureMessageActions({
                 }
               }}
             >
-              <Copy className="h-3.5 w-3.5 text-gray-500 hover:text-purple-600" />
+              <Files className="h-3 w-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Copy message</TooltipContent>
@@ -76,7 +76,7 @@ export function PureMessageActions({
           <TooltipTrigger asChild>
             <Button
               data-testid="message-upvote"
-              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent !pointer-events-auto"
+              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent hover:text-purple-600 !pointer-events-auto"
               disabled={vote?.isUpvoted}
               variant="ghost"
               onClick={async () => {
@@ -119,7 +119,7 @@ export function PureMessageActions({
                 });
               }}
             >
-              <ThumbsUp className="h-3.5 w-3.5 text-gray-500 hover:text-purple-600" />
+              <ThumbsUp className="h-3 w-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Upvote</TooltipContent>
@@ -131,7 +131,7 @@ export function PureMessageActions({
           <TooltipTrigger asChild>
             <Button
               data-testid="message-downvote"
-              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent !pointer-events-auto"
+              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent hover:text-purple-600 !pointer-events-auto"
               variant="ghost"
               disabled={vote && !vote.isUpvoted}
               onClick={async () => {
@@ -174,7 +174,7 @@ export function PureMessageActions({
                 });
               }}
             >
-              <ThumbsDown className="h-3.5 w-3.5 text-gray-500 hover:text-purple-600" />
+              <ThumbsDown className="h-3 w-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Downvote</TooltipContent>
