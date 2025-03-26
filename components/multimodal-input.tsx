@@ -181,121 +181,123 @@ function PureMultimodalInput({
   );
 
   return (
-    <div className="relative w-full flex rounded-2xl flex-col gap-4 shadow-[0_0_15px_rgba(0,0,0,0.1)]">
-      {messages.length === 0 &&
-        attachments.length === 0 &&
-        uploadQueue.length === 0 && (
-          <SuggestedActions append={append} chatId={chatId} />
-        )}
+    <div className="flex flex-col gap-2 max-w-3xl mx-auto w-full">
+      <div className="relative w-full flex flex-col gap-4 rounded-[30px] bg-white shadow-lg border border-gray-100">
+        <Textarea
+          data-testid="multimodal-input"
+          ref={textareaRef}
+          placeholder="What's on your mind?"
+          value={input}
+          onChange={handleInput}
+          className={cx(
+            'min-h-[60px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-[45px] !text-base bg-white pb-16 px-6 pt-4 border-0',
+            className,
+          )}
+          rows={1}
+          autoFocus
+          onKeyDown={(event) => {
+            if (
+              event.key === 'Enter' &&
+              !event.shiftKey &&
+              !event.nativeEvent.isComposing
+            ) {
+              event.preventDefault();
 
-      <input
-        type="file"
-        className="fixed -top-4 -left-4 size-0.5 opacity-0 pointer-events-none"
-        ref={fileInputRef}
-        multiple
-        onChange={handleFileChange}
-        tabIndex={-1}
-      />
-
-      {(attachments.length > 0 || uploadQueue.length > 0) && (
-        <div
-          data-testid="attachments-preview"
-          className="flex flex-row gap-2 overflow-x-scroll items-end"
-        >
-          {attachments.map((attachment) => (
-            <PreviewAttachment key={attachment.url} attachment={attachment} />
-          ))}
-
-          {uploadQueue.map((filename) => (
-            <PreviewAttachment
-              key={filename}
-              attachment={{
-                url: '',
-                name: filename,
-                contentType: '',
-              }}
-              isUploading={true}
-            />
-          ))}
-        </div>
-      )}
-
-      <Textarea
-        data-testid="multimodal-input"
-        ref={textareaRef}
-        placeholder="What's in your mind?"
-        value={input}
-        onChange={handleInput}
-        className={cx(
-          'min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base bg-muted pb-10 border-0',
-          className,
-        )}
-        rows={2}
-        autoFocus
-        onKeyDown={(event) => {
-          if (
-            event.key === 'Enter' &&
-            !event.shiftKey &&
-            !event.nativeEvent.isComposing
-          ) {
-            event.preventDefault();
-
-            if (status !== 'ready') {
-              toast.error('The Luren is answering now, wait!');
-            } else {
-              submitForm();
+              if (status !== 'ready') {
+                toast.error('The Luren is answering now, wait!');
+              } else {
+                submitForm();
+              }
             }
-          }
-        }}
-      />
+          }}
+        />
 
-      <div className="absolute top-2 right-2">
-        {status === 'submitted' ? (
-          <StopButton stop={stop} setMessages={setMessages} />
-        ) : (
-          <SendButton
-            input={input}
-            submitForm={submitForm}
-            uploadQueue={uploadQueue}
-          />
+        <div className="absolute bottom-0 p-3 w-full flex flex-row justify-between items-center">
+          <div className="flex gap-2">
+            <Button
+              className="rounded-full p-2 h-fit text-gray-500 mt-0.5 "
+              variant="ghost"
+              onClick={(event) => {
+                event.preventDefault();
+                fileInputRef.current?.click();
+              }}
+              disabled={status !== 'ready'}
+            >
+              <Paperclip className="size-5" />
+            </Button>
+
+            <Button
+              className="rounded-full p-2 h-fit text-gray-500 flex gap-2 items-center"
+              variant="ghost"
+              onClick={() => {
+                toast.info('Search functionality coming soon!');
+              }}
+            >
+              <Search className="size-5" />
+              <span>Search</span>
+            </Button>
+
+            <Button
+              className="rounded-full p-2 h-fit text-gray-500  flex gap-2 items-center"
+              variant="ghost"
+              onClick={() => {
+                toast.info('Deep search functionality coming soon!');
+              }}
+            >
+              <Lightbulb className="size-5" />
+              <span>Deep Search</span>
+            </Button>
+          </div>
+
+          <div>
+            {status === 'submitted' ? (
+              <StopButton stop={stop} setMessages={setMessages} />
+            ) : (
+              <SendButton
+                input={input}
+                submitForm={submitForm}
+                uploadQueue={uploadQueue}
+              />
+            )}
+          </div>
+        </div>
+
+        <input
+          type="file"
+          className="fixed -top-4 -left-4 size-0.5 opacity-0 pointer-events-none"
+          ref={fileInputRef}
+          multiple
+          onChange={handleFileChange}
+          tabIndex={-1}
+        />
+
+        {(attachments.length > 0 || uploadQueue.length > 0) && (
+          <div
+            data-testid="attachments-preview"
+            className="flex flex-row gap-2 overflow-x-scroll items-end px-4"
+          >
+            {attachments.map((attachment) => (
+              <PreviewAttachment key={attachment.url} attachment={attachment} />
+            ))}
+
+            {uploadQueue.map((filename) => (
+              <PreviewAttachment
+                key={filename}
+                attachment={{
+                  url: '',
+                  name: filename,
+                  contentType: '',
+                }}
+                isUploading={true}
+              />
+            ))}
+          </div>
         )}
       </div>
-
-      <div className="absolute bottom-0 p-2 w-full flex flex-row justify-between items-center">
-        <div className="flex gap-2">
-          <AttachmentsButton fileInputRef={fileInputRef} status={status} />
-
-          <Button
-            className="rounded-md p-[7px] h-fit text-gray-500 group"
-            variant="ghost"
-            onClick={() => {
-              toast.info('Search functionality coming soon!');
-            }}
-          >
-            <div className="group-hover:text-purple-600 group-hover:scale-110 transition-all">
-              <Search className="size-10 group-hover:text-purple-600" />
-            </div>
-            <span className="group-hover:text-purple-600 transition-all">
-              Search
-            </span>
-          </Button>
-
-          <Button
-            className="rounded-md p-[7px] h-fit text-gray-500 group"
-            variant="ghost"
-            onClick={() => {
-              toast.info('Deep search functionality coming soon!');
-            }}
-          >
-            <div className="group-hover:text-purple-600 group-hover:scale-110 transition-all">
-              <Lightbulb className="size-10 group-hover:text-purple-600" />
-            </div>
-            <span className="group-hover:text-purple-600 transition-all">
-              Justify
-            </span>
-          </Button>
-        </div>
-      </div>
+      <p className="text-center text-sm text-gray-500">
+        Lumia may contain errors. We recommend that you check important
+        information.
+      </p>
     </div>
   );
 }
@@ -311,34 +313,6 @@ export const MultimodalInput = memo(
   },
 );
 
-function PureAttachmentsButton({
-  fileInputRef,
-  status,
-}: {
-  fileInputRef: React.MutableRefObject<HTMLInputElement | null>;
-  status: UseChatHelpers['status'];
-}) {
-  return (
-    <Button
-      data-testid="attachments-button"
-      className="rounded-md rounded-bl-lg p-[7px] h-fit dark:border-zinc-700 text-gray-500 group"
-      onClick={(event) => {
-        event.preventDefault();
-        fileInputRef.current?.click();
-      }}
-      disabled={status !== 'ready'}
-      variant="ghost"
-    >
-      <div className="group-hover:text-purple-600 group-hover:scale-110 transition-all">
-        <Paperclip className="size-10 group-hover:text-purple-600" />
-      </div>
-      <span className="group-hover:text-purple-600 transition-all">Attach</span>
-    </Button>
-  );
-}
-
-const AttachmentsButton = memo(PureAttachmentsButton);
-
 function PureStopButton({
   stop,
   setMessages,
@@ -349,14 +323,14 @@ function PureStopButton({
   return (
     <Button
       data-testid="stop-button"
-      className="rounded-full p-1.5 h-fit bg-black text-white"
+      className="rounded-full p-2 h-fit bg-black text-white hover:bg-gray-800"
       onClick={(event) => {
         event.preventDefault();
         stop();
         setMessages((messages) => messages);
       }}
     >
-      <StopIcon size={14} />
+      <StopIcon size={20} />
     </Button>
   );
 }
@@ -375,14 +349,14 @@ function PureSendButton({
   return (
     <Button
       data-testid="send-button"
-      className="rounded-full bg-black  bg-black text-white p-1.5 h-fit"
+      className="rounded-full bg-black text-white p-2 h-fit hover:bg-gray-800"
       onClick={(event) => {
         event.preventDefault();
         submitForm();
       }}
       disabled={input.length === 0 || uploadQueue.length > 0}
     >
-      <ArrowUpIcon size={18} />
+      <ArrowUpIcon size={20} />
     </Button>
   );
 }

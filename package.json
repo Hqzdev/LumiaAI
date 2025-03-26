@@ -1,5 +1,5 @@
 {
-  "name": "ai-luren-a.i",
+  "name": "ai-Lumia-a.i",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -107,7 +107,7 @@
     "typescript": "^5.6.3"
   },
   "packageManager": "pnpm@9.12.3",
-  "description": "<a href=\"https://chat.vercel.ai/\">   <img alt=\"Next.js 14 and App Router-ready AI Luren A.I.\" src=\"app/(chat)/opengraph-image.png\">   <h1 align=\"center\">Next.js AI Luren A.I</h1> </a>",
+  "description": "<a href=\"https://chat.vercel.ai/\">   <img alt=\"Next.js 14 and App Router-ready AI Lumia A.I.\" src=\"app/(chat)/opengraph-image.png\">   <h1 align=\"center\">Next.js AI Lumia A.I</h1> </a>",
   "main": "index.js",
   "directories": {
     "doc": "docs",

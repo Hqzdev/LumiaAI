@@ -366,11 +366,17 @@ const SidebarHeader = React.forwardRef<
     <div
       ref={ref}
       data-sidebar="header"
-      className={cn('flex flex-col gap-2 p-2', className)}
+      className={cn(
+        // bg-white/20 делает фон полупрозрачным,
+        // backdrop-blur-lg размывает фон позади элемента
+        'flex flex-col gap-2 p-2 bg-white/20 backdrop-blur-2xl',
+        className,
+      )}
       {...props}
     />
   );
 });
+
 SidebarHeader.displayName = 'SidebarHeader';
 
 const SidebarFooter = React.forwardRef<

@@ -12,8 +12,7 @@ const buttonVariants = cva(
         default: 'text-primary hover:text-purple-600', // Меняем текст на purple-600 при наведении
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        outline:
-          'bg-background hover:text-purple-600', // Меняем текст на purple-600 при наведении
+        outline: 'bg-background hover:text-purple-600', // Меняем текст на purple-600 при наведении
         secondary:
           'bg-secondary text-secondary-foreground hover:text-purple-600', // Меняем текст на purple-600 при наведении
         ghost: 'hover:text-purple-600', // Меняем текст на purple-600 при наведении

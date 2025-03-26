@@ -1,6 +1,6 @@
 # Update Models
 
-The Luren A.I template ships with [xAI](https://sdk.vercel.ai/providers/ai-sdk-providers/xai) as the default model provider. Since the template is powered by the [AI SDK](https://sdk.vercel.ai), which supports [multiple providers](https://sdk.vercel.ai/providers/ai-sdk-providers) out of the box, you can easily switch to another provider of your choice.
+The Lumia A.I template ships with [xAI](https://sdk.vercel.ai/providers/ai-sdk-providers/xai) as the default model provider. Since the template is powered by the [AI SDK](https://sdk.vercel.ai), which supports [multiple providers](https://sdk.vercel.ai/providers/ai-sdk-providers) out of the box, you can easily switch to another provider of your choice.
 
 To update the models, you will need to update the custom provider called `myProvider` at `/lib/ai/models.ts` shown below.
 
@@ -49,4 +49,4 @@ export const myProvider = customProvider({
 });
 ```
 
-You can find the provider library and model names in the [provider](https://sdk.vercel.ai/providers/ai-sdk-providers)'s documentation. Once you have updated the models, you should be able to use the new models in your Luren A.I.
+You can find the provider library and model names in the [provider](https://sdk.vercel.ai/providers/ai-sdk-providers)'s documentation. Once you have updated the models, you should be able to use the new models in your Lumia A.I.
