@@ -349,7 +349,7 @@ function PureSendButton({
   return (
     <Button
       data-testid="send-button"
-      className="rounded-full bg-black text-white p-2 h-fit hover:bg-gray-800"
+      className="rounded-full bg-black text-white p-2 h-fit"
       onClick={(event) => {
         event.preventDefault();
         submitForm();
