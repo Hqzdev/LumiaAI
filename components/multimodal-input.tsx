@@ -182,7 +182,7 @@ function PureMultimodalInput({
 
   return (
     <div className="flex flex-col gap-2 max-w-3xl mx-auto w-full">
-      <div className="relative w-full flex flex-col gap-4 rounded-[30px] bg-white shadow-lg border border-gray-100">
+      <div className="relative w-full flex flex-col gap-4 rounded-[30px] bg-white shadow-lg border border-gray-200">
         <Textarea
           data-testid="multimodal-input"
           ref={textareaRef}
@@ -190,7 +190,7 @@ function PureMultimodalInput({
           value={input}
           onChange={handleInput}
           className={cx(
-            'min-h-[60px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-[45px] !text-base bg-white pb-16 px-6 pt-4 border-0',
+            'min-h-[60px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-[30px] !text-base bg-white pb-16 px-6 pt-4 border border-gray-200',
             className,
           )}
           rows={1}
@@ -204,7 +204,7 @@ function PureMultimodalInput({
               event.preventDefault();
 
               if (status !== 'ready') {
-                toast.error('The Luren is answering now, wait!');
+                toast.error('The Lumia A.i is answering now, wait!');
               } else {
                 submitForm();
               }

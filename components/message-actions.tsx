@@ -40,14 +40,14 @@ export function PureMessageActions({
     <TooltipProvider delayDuration={0}>
       <div
         className={cn(
-          'w-[120px] inline-flex flex-row bg-black/5 rounded-full p-1 -gap-1 justify-between',
+          'w-[120px] inline-flex flex-row bg-black/5 rounded-full p-1 -gap-2 justify-between',
           className,
         )}
       >
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              className="py-1 px-2 h-fit text-gray-600 hover:text-purple-600"
+              className="py-1 px-2 h-fit text-gray-600 hover:text-purple-500"
               variant="ghost"
               onClick={async () => {
                 const textFromParts = message.parts
@@ -67,7 +67,7 @@ export function PureMessageActions({
               <Files className="h-3 w-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Copy message</TooltipContent>
+          <TooltipContent>Copy</TooltipContent>
         </Tooltip>
 
         <div className="w-px h-4 bg-gray-300 my-auto" />
@@ -113,7 +113,7 @@ export function PureMessageActions({
                       { revalidate: false },
                     );
 
-                    return 'Upvoted Response!';
+                    return 'Succesfully!';
                   },
                   error: 'Failed to upvote response.',
                 });
@@ -122,7 +122,7 @@ export function PureMessageActions({
               <ThumbsUp className="h-3 w-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Upvote</TooltipContent>
+          <TooltipContent>Like</TooltipContent>
         </Tooltip>
 
         <div className="w-px h-5 bg-gray-300 my-auto" />
@@ -168,16 +168,16 @@ export function PureMessageActions({
                       { revalidate: false },
                     );
 
-                    return 'Downvoted Response!';
+                    return 'Succesfully!';
                   },
-                  error: 'Failed to downvote response.',
+                  error: 'Failed to response.',
                 });
               }}
             >
               <ThumbsDown className="h-3 w-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Downvote</TooltipContent>
+          <TooltipContent>Dislike</TooltipContent>
         </Tooltip>
       </div>
     </TooltipProvider>

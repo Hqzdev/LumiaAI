@@ -4,6 +4,7 @@ import Image from 'next/image';
 import type { User } from 'next-auth';
 import { signOut } from 'next-auth/react';
 import { useTheme } from 'next-themes';
+import { Settings, LogOut } from 'lucide-react';
 
 import {
   DropdownMenu,
@@ -51,7 +52,22 @@ export function SidebarUserNav({ user }: { user: User }) {
                   });
                 }}
               >
+                <LogOut />
                 Sign out
+              </button>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <button
+                type="button"
+                className="w-full cursor-pointer hover:text-purple-600"
+                onClick={() => {
+                  signOut({
+                    redirectTo: '/',
+                  });
+                }}
+              >
+                <Settings />
+                Settings
               </button>
             </DropdownMenuItem>
           </DropdownMenuContent>

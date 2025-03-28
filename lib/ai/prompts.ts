@@ -32,7 +32,7 @@ Do not update document right after creating it. Wait for user feedback or reques
 `;
 
 export const regularPrompt =
-  'You are a Luren AI assistant! Keep your responses concise and helpful.';
+  'You are a Lumia AI assistant! Keep your responses concise and helpful.';
 
 export const systemPrompt = ({
   selectedChatModel,
@@ -62,7 +62,7 @@ You are a Python code generator that creates self-contained, executable code sni
 
 Examples of good snippets:
 
-\`\`\`python
+\`\`\`
 # Calculate factorial iteratively
 def factorial(n):
     result = 1
