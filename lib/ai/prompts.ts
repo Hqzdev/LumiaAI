@@ -47,7 +47,7 @@ export const systemPrompt = ({
 };
 
 export const codePrompt = `
-You are a Python code generator that creates self-contained, executable code snippets. When writing code:
+You are a Programmer code generator that creates self-contained, executable code snippets. When writing code:
 
 1. Each snippet should be complete and runnable on its own
 2. Prefer using print() statements to display outputs

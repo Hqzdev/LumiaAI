@@ -17,6 +17,7 @@ import { toast } from 'sonner';
 import { useLocalStorage, useWindowSize } from 'usehooks-ts';
 
 import { ArrowUpIcon, StopIcon } from './icons';
+import { ArrowUp, Square } from 'lucide-react';
 import { PreviewAttachment } from './preview-attachment';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
@@ -323,18 +324,18 @@ function PureStopButton({
   return (
     <Button
       data-testid="stop-button"
-      className="rounded-full p-2 h-fit bg-black text-white hover:bg-gray-800"
+      variant={undefined} // <== отключаем вариант
+      className="rounded-full p-2 h-fit bg-black text-white hover:text-white"
       onClick={(event) => {
         event.preventDefault();
         stop();
         setMessages((messages) => messages);
       }}
     >
-      <StopIcon size={20} />
+      <StopIcon size={6} />
     </Button>
   );
 }
-
 const StopButton = memo(PureStopButton);
 
 function PureSendButton({
@@ -356,7 +357,7 @@ function PureSendButton({
       }}
       disabled={input.length === 0 || uploadQueue.length > 0}
     >
-      <ArrowUpIcon size={20} />
+      <ArrowUp className="bg-black text-white w-6 h-6" strokeWidth={3} />
     </Button>
   );
 }

@@ -272,9 +272,43 @@ export const ThinkingMessage = () => {
         </div>
 
         <div className="flex flex-col gap-2 w-full">
-          <div className="flex flex-col gap-4 text-muted-foreground">
-            Lumia A.I is thinking...
+          <div className="relative inline-block">
+            {/* Base gray text */}
+            <span className="text-gray-500">Lumia A.I is thinking...</span>
+
+            {/* White highlight overlay */}
+            <span className="absolute inset-0 white-wave-effect">
+              Lumia A.I is thinking...
+            </span>
           </div>
+
+          <style jsx>{`
+        .white-wave-effect {
+          color: transparent;
+          background: linear-gradient(
+            to right,
+            transparent 0%,
+            transparent 45%,
+            white 48%,
+            white 52%,
+            transparent 55%,
+            transparent 100%
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          background-size: 200% 100%;
+          animation: whiteWave 4s linear infinite;
+        }
+        
+        @keyframes whiteWave {
+          0% {
+            background-position: -100% 0;
+          }
+          100% {
+            background-position: 100% 0;
+          }
+        }
+      `}</style>
         </div>
       </div>
     </motion.div>
