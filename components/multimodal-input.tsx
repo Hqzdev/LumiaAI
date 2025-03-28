@@ -191,7 +191,7 @@ function PureMultimodalInput({
           value={input}
           onChange={handleInput}
           className={cx(
-            'min-h-[60px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-[30px] !text-base bg-white pb-16 px-6 pt-4 border border-gray-200',
+            'min-h-[60px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-[30px] !text-base bg-white pb-16 px-6 pt-4 border border-gray-200 focus:border-gray-200 focus-visible:border-gray-200 focus:ring-0 focus-visible:ring-0',
             className,
           )}
           rows={1}
