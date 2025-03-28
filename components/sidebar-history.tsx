@@ -7,6 +7,7 @@ import type { User } from 'next-auth';
 import { memo, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import useSWR from 'swr';
+import { AlertTriangle } from 'lucide-react';
 
 import {
   CheckCircleFillIcon,
@@ -17,15 +18,13 @@ import {
   TrashIcon,
 } from '@/components/icons';
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -106,7 +105,9 @@ const PureChatItem = ({
 
           <DropdownMenuItem
             className="cursor-pointer text-destructive focus:bg-destructive/15 focus:text-destructive dark:text-red-500"
-            onSelect={() => onDelete(chat.id)}
+            onSelect={() => {
+              onDelete(chat.id);
+            }}
           >
             <TrashIcon />
             <span>Delete</span>
@@ -139,7 +140,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
   }, [pathname, mutate]);
 
   const [deleteId, setDeleteId] = useState<string | null>(null);
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const router = useRouter();
   const handleDelete = async () => {
     const deletePromise = fetch(`/api/chat?id=${deleteId}`, {
@@ -159,7 +160,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
       error: 'Failed to delete chat',
     });
 
-    setShowDeleteDialog(false);
+    setIsDeleteDialogOpen(false);
 
     if (deleteId === id) {
       router.push('/');
@@ -275,7 +276,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                             isActive={chat.id === id}
                             onDelete={(chatId) => {
                               setDeleteId(chatId);
-                              setShowDeleteDialog(true);
+                              setIsDeleteDialogOpen(true);
                             }}
                             setOpenMobile={setOpenMobile}
                           />
@@ -295,7 +296,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                             isActive={chat.id === id}
                             onDelete={(chatId) => {
                               setDeleteId(chatId);
-                              setShowDeleteDialog(true);
+                              setIsDeleteDialogOpen(true);
                             }}
                             setOpenMobile={setOpenMobile}
                           />
@@ -315,7 +316,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                             isActive={chat.id === id}
                             onDelete={(chatId) => {
                               setDeleteId(chatId);
-                              setShowDeleteDialog(true);
+                              setIsDeleteDialogOpen(true);
                             }}
                             setOpenMobile={setOpenMobile}
                           />
@@ -335,7 +336,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                             isActive={chat.id === id}
                             onDelete={(chatId) => {
                               setDeleteId(chatId);
-                              setShowDeleteDialog(true);
+                              setIsDeleteDialogOpen(true);
                             }}
                             setOpenMobile={setOpenMobile}
                           />
@@ -355,7 +356,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                             isActive={chat.id === id}
                             onDelete={(chatId) => {
                               setDeleteId(chatId);
-                              setShowDeleteDialog(true);
+                              setIsDeleteDialogOpen(true);
                             }}
                             setOpenMobile={setOpenMobile}
                           />
@@ -368,23 +369,44 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>
-      <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your
-              chat and remove it from our servers.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete}>
-              Continue
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="mb-2 text-xl">Delete chat</DialogTitle>
+          </DialogHeader>
+
+          <div className="text-gray-600">
+            Are you sure you want to delete this chat? This action cannot be undone.
+          </div>
+
+          <div className="bg-white p-3 rounded-lg flex gap-2 items-start text-sm text-gray-500">
+            <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0" />
+            <div>
+              <strong>
+                Warning: <span className="text-red-600">This action is permanent</span>
+              </strong>
+              <div className="text-xs">
+                All messages and history in this chat will be permanently deleted.
+              </div>
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button
+              className="text-gray-500 hover:text-purple-600 bg-white hover:bg-white rounded-lg"
+              onClick={() => setIsDeleteDialogOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="text-red-600 hover:text-red-700 bg-white hover:bg-white"
+              onClick={handleDelete}
+            >
+              Delete
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

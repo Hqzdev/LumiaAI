@@ -30,7 +30,7 @@ function PureChatHeader({
   const { width: windowWidth } = useWindowSize();
 
   return (
-    <header className="flex sticky top-0 bg-background py-1.5 items-center px-2 md:px-2 gap-2">
+    <header className="flex sticky top-0 bg-background py-2 items-center px-3 md:px-4 gap-3">
       <SidebarToggle />
 
       {(!open || windowWidth < 768) && (
@@ -38,13 +38,13 @@ function PureChatHeader({
           <TooltipTrigger asChild>
             <Button
               variant="outline"
-              className="order-2 md:order-1 md:px-2 px-2 md:h-fit ml-auto md:ml-0"
+              className="order-2 md:order-1 px-4 py-2 md:h-fit ml-auto md:ml-0 text-lg"
               onClick={() => {
                 router.push('/');
                 router.refresh();
               }}
             >
-              <PlusIcon />
+              <PlusIcon size={20} />
             </Button>
           </TooltipTrigger>
           <TooltipContent>New Chat</TooltipContent>
@@ -59,7 +59,7 @@ function PureChatHeader({
       )}
 
       <Button
-        className="bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-zinc-50 dark:text-zinc-900 hidden md:flex py-1.5 px-2 h-fit md:h-[34px] order-4 md:ml-auto"
+        className="bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-zinc-50 dark:text-zinc-900 hidden md:flex py-2 px-4 md:h-[40px] text-lg order-4 md:ml-auto"
         asChild
       ></Button>
     </header>
