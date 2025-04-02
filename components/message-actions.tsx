@@ -64,7 +64,7 @@ export function PureMessageActions({
                 }
               }}
             >
-              <Files className="h-3 w-3 text-gray-500 hover:text-purple-600" />
+              <Files className="size-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Copy</TooltipContent>
@@ -119,7 +119,7 @@ export function PureMessageActions({
                 });
               }}
             >
-              <ThumbsUp className="h-3 w-3 text-gray-500 hover:text-purple-600" />
+              <ThumbsUp className="size-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Like</TooltipContent>
@@ -174,7 +174,7 @@ export function PureMessageActions({
                 });
               }}
             >
-              <ThumbsDown className="h-3 w-3 text-gray-500 hover:text-purple-600" />
+              <ThumbsDown className="size-3 text-gray-500 hover:text-purple-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Dislike</TooltipContent>

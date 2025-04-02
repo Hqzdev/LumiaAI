@@ -70,7 +70,7 @@ export default function Page() {
         <AuthForm action={handleSubmit} defaultEmail={email}>
           <SubmitButton
             isSuccessful={isSuccessful}
-            className="text-purple-600 hover:text-purple-600 transition-all duration-200 transform hover:scale-[1.1]"
+            className="text-purple-600 hover:text-purple-600 transition-all duration-200 hover:scale-110"
           >
             Sign in
           </SubmitButton>

@@ -72,7 +72,7 @@ export default function AnimatedGradient() {
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed top-0 left-0 w-full h-full -z-10"
+      className="fixed top-0 left-0 size-full -z-10"
       style={{ opacity: 0.8 }}
     />
   );

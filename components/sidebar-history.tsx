@@ -380,7 +380,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
           </div>
 
           <div className="bg-white p-3 rounded-lg flex gap-2 items-start text-sm text-gray-500">
-            <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0" />
+            <AlertTriangle className="size-5 text-red-400 shrink-0" />
             <div>
               <strong>
                 Warning: <span className="text-red-600">This action is permanent</span>

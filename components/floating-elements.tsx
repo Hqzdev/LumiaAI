@@ -60,7 +60,7 @@ export default function FloatingElements() {
   }, [])
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-5">
+    <div className="fixed top-0 left-0 size-full pointer-events-none -z-5">
       {elements.map((element) => (
         <div
           key={element.id}

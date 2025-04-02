@@ -20,6 +20,7 @@ import { ArrowUpIcon, StopIcon } from './icons';
 import { ArrowUp, Square } from 'lucide-react';
 import { PreviewAttachment } from './preview-attachment';
 import { Button } from './ui/button';
+import { SearchModeToggle } from './search-mode-toggle'
 import { Textarea } from './ui/textarea';
 import { SuggestedActions } from './suggested-actions';
 import equal from 'fast-deep-equal';
@@ -226,28 +227,9 @@ function PureMultimodalInput({
             >
               <Paperclip className="size-5" />
             </Button>
+            <SearchModeToggle />
 
-            <Button
-              className="rounded-full p-2 h-fit text-gray-500 flex gap-2 items-center"
-              variant="ghost"
-              onClick={() => {
-                toast.info('Search functionality coming soon!');
-              }}
-            >
-              <Search className="size-5" />
-              <span>Search</span>
-            </Button>
 
-            <Button
-              className="rounded-full p-2 h-fit text-gray-500  flex gap-2 items-center"
-              variant="ghost"
-              onClick={() => {
-                toast.info('Deep search functionality coming soon!');
-              }}
-            >
-              <Lightbulb className="size-5" />
-              <span>Deep Search</span>
-            </Button>
           </div>
 
           <div>
@@ -357,7 +339,7 @@ function PureSendButton({
       }}
       disabled={input.length === 0 || uploadQueue.length > 0}
     >
-      <ArrowUp className="bg-black text-white w-6 h-6" strokeWidth={3} />
+      <ArrowUp className="bg-black text-white size-6" strokeWidth={3} />
     </Button>
   );
 }

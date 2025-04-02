@@ -76,7 +76,7 @@ export default function Page() {
           {/* Submit-кнопка */}
           <SubmitButton
             isSuccessful={isSuccessful}
-            className="bg-purple-600 hover:bg-purple-700 transition-all duration-200 transform hover:scale-[1.02]"
+            className="bg-purple-600 hover:bg-purple-700 transition-all duration-200 hover:scale-[1.02]"
           >
             Sign Up
           </SubmitButton>

@@ -104,7 +104,7 @@ const PurePreviewMessage = ({
                                 setMode('edit');
                               }}
                             >
-                              <Pencil size={14} className="h-4 w-4 mb-1" />
+                              <Pencil size={14} className="size-4 mb-1" />
                             </Button>
                           </TooltipTrigger>
                           <TooltipContent>Edit message</TooltipContent>
