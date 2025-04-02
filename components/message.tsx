@@ -58,18 +58,7 @@ const PurePreviewMessage = ({
             },
           )}
         >
-          {message.role === 'assistant' && (
-            <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border bg-background">
-              <div className="translate-y-px">
-                <Sparkles className="h-4 w-4">
-                  <linearGradient id="sparkleGradient">
-                    <stop offset="0%" stopColor="yellow" />
-                    <stop offset="100%" stopColor="orange" />
-                  </linearGradient>
-                </Sparkles>
-              </div>
-            </div>
-          )}
+       
 
           <div className="flex flex-col gap-4 w-full">
             {message.experimental_attachments && (
@@ -267,9 +256,7 @@ export const ThinkingMessage = () => {
           },
         )}
       >
-        <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border">
-          <SparklesIcon size={14} />
-        </div>
+       
 
         <div className="flex flex-col gap-2 w-full">
           <div className="relative inline-block">
