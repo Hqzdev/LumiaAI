@@ -27,19 +27,14 @@ interface SearchResultsImageSectionProps {
   query?: string
 }
 
-export const SearchResultsImageSection: React.FC<
-  SearchResultsImageSectionProps
-> = ({ images, query }) => {
+export const SearchResultsImageSection: React.FC<SearchResultsImageSectionProps> = ({ images, query }) => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
   const [selectedIndex, setSelectedIndex] = useState(0)
 
-  // Update the current and count state when the carousel api is available
   useEffect(() => {
-    if (!api) {
-      return
-    }
+    if (!api) return
 
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
@@ -49,7 +44,6 @@ export const SearchResultsImageSection: React.FC<
     })
   }, [api])
 
-  // Scroll to the selected index
   useEffect(() => {
     if (api) {
       api.scrollTo(selectedIndex, true)
@@ -60,40 +54,30 @@ export const SearchResultsImageSection: React.FC<
     return <div className="text-muted-foreground">No images found</div>
   }
 
-  // If enabled the include_images_description is true, the images will be an array of { url: string, description: string }
-  // Otherwise, the images will be an array of strings
-  let convertedImages: { url: string; description: string }[] = []
-  if (typeof images[0] === 'string') {
-    convertedImages = (images as string[]).map(image => ({
-      url: image,
-      description: ''
-    }))
-  } else {
-    convertedImages = images as { url: string; description: string }[]
-  }
+  const convertedImages = typeof images[0] === 'string' 
+    ? (images as string[]).map(image => ({ url: image, description: '' }))
+    : images as { url: string; description: string }[]
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {convertedImages.slice(0, 4).map((image, index) => (
         <Dialog key={index}>
           <DialogTrigger asChild>
             <div
-              className="w-[calc(50%-0.5rem)] md:w-[calc(25%-0.5rem)] aspect-video cursor-pointer relative"
+              className="aspect-video cursor-pointer relative group"
               onClick={() => setSelectedIndex(index)}
             >
-              <Card className="flex-1 h-full">
-                <CardContent className="p-2 size-full">
+              <Card className="h-full transition-transform group-hover:scale-[1.02]">
+                <CardContent className="p-0 size-full">
                   {image ? (
                     <img
                       src={image.url}
                       alt={`Image ${index + 1}`}
-                      className="size-full object-cover"
-                      onError={e =>
-                        (e.currentTarget.src = '/images/placeholder-image.png')
-                      }
+                      className="size-full object-cover rounded-md"
+                      onError={e => (e.currentTarget.src = '/images/placeholder-image.png')}
                     />
                   ) : (
-                    <div className="size-full bg-muted animate-pulse" />
+                    <div className="size-full bg-muted animate-pulse rounded-md" />
                   )}
                 </CardContent>
               </Card>
@@ -112,20 +96,17 @@ export const SearchResultsImageSection: React.FC<
             <div className="py-4">
               <Carousel
                 setApi={setApi}
-                className="w-full bg-muted max-h-[60vh]"
+                className="w-full bg-muted rounded-lg"
               >
                 <CarouselContent>
                   {convertedImages.map((img, idx) => (
                     <CarouselItem key={idx}>
-                      <div className="p-1 flex items-center justify-center h-full">
+                      <div className="p-1 flex items-center justify-center">
                         <img
                           src={img.url}
                           alt={`Image ${idx + 1}`}
-                          className="h-auto w-full object-contain max-h-[60vh]"
-                          onError={e =>
-                            (e.currentTarget.src =
-                              '/images/placeholder-image.png')
-                          }
+                          className="max-h-[60vh] w-auto object-contain rounded-md"
+                          onError={e => (e.currentTarget.src = '/images/placeholder-image.png')}
                         />
                       </div>
                     </CarouselItem>
