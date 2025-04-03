@@ -21,7 +21,7 @@ import {
   CarouselPrevious
 } from '@/components/ui/carousel'
 import { SerperSearchResultItem, SerperSearchResults } from '@/lib/types'
-import { PlusCircle } from 'lucide-react'
+import { PlusCircle, Play } from 'lucide-react'
 
 export interface VideoSearchResultsProps {
   results: SerperSearchResults
@@ -105,6 +105,10 @@ export function VideoSearchResults({ results }: VideoSearchResultsProps) {
                     <div className="text-xs opacity-60 truncate">
                       {new URL(result.link).hostname}
                     </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Play className="size-4 text-purple-600" />
+                    <span className="text-sm text-gray-500">Watch Video</span>
                   </div>
                 </CardContent>
               </Card>

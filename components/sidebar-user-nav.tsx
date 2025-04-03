@@ -1,10 +1,10 @@
 'use client';
-import { ChevronUp } from 'lucide-react';
+import { ChevronUp, LogOut, Settings } from 'lucide-react';
 import Image from 'next/image';
 import type { User } from 'next-auth';
 import { signOut } from 'next-auth/react';
 import { useTheme } from 'next-themes';
-import { Settings, LogOut } from 'lucide-react';
+import { useState } from 'react';
 
 import {
   DropdownMenu,
@@ -17,9 +17,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { SettingsDialog } from '@/components/settings-dialog';
 
 export function SidebarUserNav({ user }: { user: User }) {
   const { setTheme, theme } = useTheme();
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   return (
     <SidebarMenu>
@@ -52,27 +54,24 @@ export function SidebarUserNav({ user }: { user: User }) {
                   });
                 }}
               >
-                <LogOut />
+                <LogOut className="mr-2 size-4" />
                 Sign out
               </button>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <button
                 type="button"
-                className="w-full cursor-pointer hover:text-purple-600"
-                onClick={() => {
-                  signOut({
-                    redirectTo: '/',
-                  });
-                }}
+                className="w-full cursor-pointer"
+                onClick={() => setIsSettingsOpen(true)}
               >
-                <Settings />
+                <Settings className="mr-2 size-4" />
                 Settings
               </button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
+      <SettingsDialog open={isSettingsOpen} onOpenChange={setIsSettingsOpen} />
     </SidebarMenu>
   );
 }

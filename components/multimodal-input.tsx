@@ -17,7 +17,7 @@ import { toast } from 'sonner';
 import { useLocalStorage, useWindowSize } from 'usehooks-ts';
 
 import { ArrowUpIcon, StopIcon } from './icons';
-import { ArrowUp, Square } from 'lucide-react';
+import { ArrowUp, Square, Paperclip, Search, Lightbulb } from 'lucide-react';
 import { PreviewAttachment } from './preview-attachment';
 import { Button } from './ui/button';
 import { SearchModeToggle } from './search-mode-toggle'
@@ -25,7 +25,6 @@ import { Textarea } from './ui/textarea';
 import { SuggestedActions } from './suggested-actions';
 import equal from 'fast-deep-equal';
 import { UseChatHelpers, UseChatOptions } from '@ai-sdk/react';
-import { Paperclip, Search, Lightbulb } from 'lucide-react';
 
 function PureMultimodalInput({
   chatId,
