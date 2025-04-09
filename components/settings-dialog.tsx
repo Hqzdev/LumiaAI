@@ -73,36 +73,36 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[900px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-purple-600">Account Settings</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-blue-600">Account Settings</DialogTitle>
           <DialogDescription>Manage your account settings, security, and API access.</DialogDescription>
         </DialogHeader>
 
         <Tabs defaultValue="security" className="mt-4">
-          <TabsList className="grid grid-cols-4 mb-6 bg-purple-50 rounded-[20px] p-1">
+          <TabsList className="grid grid-cols-4 mb-6 bg-blue-50 rounded-[20px] p-1">
             <TabsTrigger
               value="security"
-              className="flex items-center gap-2 data-[state=active]:bg-purple-600 data-[state=active]:text-white rounded-[16px]"
+              className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-[16px]"
             >
               <Lock className="size-4" />
               Security
             </TabsTrigger>
             <TabsTrigger
               value="connections"
-              className="flex items-center gap-2 data-[state=active]:bg-purple-600 data-[state=active]:text-white rounded-[16px]"
+              className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-[16px]"
             >
               <User className="size-4" />
               Connections
             </TabsTrigger>
             <TabsTrigger
               value="api"
-              className="flex items-center gap-2 data-[state=active]:bg-purple-600 data-[state=active]:text-white rounded-[16px]"
+              className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-[16px]"
             >
               <Key className="size-4" />
               API Access
             </TabsTrigger>
             <TabsTrigger
               value="support"
-              className="flex items-center gap-2 data-[state=active]:bg-purple-600 data-[state=active]:text-white rounded-[16px]"
+              className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-[16px]"
             >
               <LifeBuoy className="size-4" />
               Support
@@ -112,9 +112,9 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
           {/* Security Tab */}
           <TabsContent value="security">
             <div className="grid gap-6">
-              <Card className="border-purple-100">
-                <CardHeader className="border-b border-purple-50">
-                  <CardTitle className="text-purple-600">Change Password</CardTitle>
+              <Card className="border-blue-100">
+                <CardHeader className="border-b border-blue-50">
+                  <CardTitle className="text-blue-600">Change Password</CardTitle>
                   <CardDescription>Update your password to keep your account secure.</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6">
@@ -127,7 +127,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                         value={currentPassword}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCurrentPassword(e.target.value)}
                         required
-                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        className="border-blue-200 focus:border-blue-400 focus:ring-blue-400"
                       />
                     </div>
                     <div className="space-y-2">
@@ -138,7 +138,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                         value={newPassword}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)}
                         required
-                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        className="border-blue-200 focus:border-blue-400 focus:ring-blue-400"
                       />
                     </div>
                     <div className="space-y-2">
@@ -149,12 +149,12 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                         value={confirmPassword}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
                         required
-                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        className="border-blue-200 focus:border-blue-400 focus:ring-blue-400"
                       />
                     </div>
                     <Button
                       type="submit"
-                      className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 p-0 h-auto font-medium"
+                      className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-0 h-auto font-medium"
                       variant="ghost"
                     >
                       Update Password
@@ -176,7 +176,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                     </div>
                     <Button
                       variant="ghost"
-                      className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 p-0 h-auto font-medium"
+                      className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-0 h-auto font-medium"
                     >
                       <LogOut className="size-4 mr-2" />
                       Log Out All
@@ -204,28 +204,28 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
 
           {/* Connections Tab */}
           <TabsContent value="connections">
-            <Card className="border-purple-100">
-              <CardHeader className="border-b border-purple-50">
-                <CardTitle className="text-purple-600">Connected Accounts</CardTitle>
+            <Card className="border-blue-100">
+              <CardHeader className="border-b border-blue-50">
+                <CardTitle className="text-blue-600">Connected Accounts</CardTitle>
                 <CardDescription>Manage accounts that are connected to your Luren AI account.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6 pt-6">
-                <div className="flex justify-between items-center py-3 border-b border-purple-50">
+                <div className="flex justify-between items-center py-3 border-b border-blue-50">
                   <div className="flex items-center gap-3">
-                    <div className="bg-purple-50 p-2 rounded-full">
-                      <Mail className="size-5 text-purple-600" />
+                    <div className="bg-blue-50 p-2 rounded-full">
+                      <Mail className="size-5 text-blue-600" />
                     </div>
                     <div>
                       <h4 className="font-medium">Email</h4>
                       <p className="text-sm text-gray-500">user@example.com</p>
                     </div>
                   </div>
-                  <Badge className="bg-purple-100 text-purple-600 hover:bg-purple-200">Primary</Badge>
+                  <Badge className="bg-blue-100 text-blue-600 hover:bg-blue-200">Primary</Badge>
                 </div>
 
-                <div className="flex justify-between items-center py-3 border-b border-purple-50">
+                <div className="flex justify-between items-center py-3 border-b border-blue-50">
                   <div className="flex items-center gap-3">
-                    <div className="bg-purple-50 p-2 rounded-full">
+                    <div className="bg-blue-50 p-2 rounded-full">
                       <Google className="size-5 text-red-500" />
                     </div>
                     <div>
@@ -235,7 +235,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                   </div>
                   <Button
                     variant="ghost"
-                    className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 p-0 h-auto font-medium"
+                    className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-0 h-auto font-medium"
                   >
                     Disconnect
                   </Button>
@@ -243,7 +243,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
 
                 <div className="flex justify-between items-center py-3">
                   <div className="flex items-center gap-3">
-                    <div className="bg-purple-50 p-2 rounded-full">
+                    <div className="bg-blue-50 p-2 rounded-full">
                       <Github className="size-5" />
                     </div>
                     <div>
@@ -253,7 +253,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                   </div>
                   <Button
                     variant="ghost"
-                    className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 p-0 h-auto font-medium"
+                    className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-0 h-auto font-medium"
                   >
                     Connect
                   </Button>
@@ -264,57 +264,35 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
 
           {/* API Access Tab */}
           <TabsContent value="api">
-            <Card className="border-purple-100">
-              <CardHeader className="border-b border-purple-50">
-                <CardTitle className="text-purple-600">API Key</CardTitle>
+            <Card className="border-blue-100">
+              <CardHeader className="border-b border-blue-50">
+                <CardTitle className="text-blue-600">API Key</CardTitle>
                 <CardDescription>Use this key to access Luren AI models via API.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4 pt-6">
-                <Alert className="bg-purple-50 border-purple-200 text-purple-800">
+                <Alert className="bg-blue-50 border-blue-200 text-blue-800">
                   <AlertTriangle className="size-4" />
-                  <AlertTitle>Keep your API key secure</AlertTitle>
+                  <AlertTitle>Keep your <span className="text-blue-600">API</span> key secure</AlertTitle>
                   <AlertDescription>
                     Your API key has access to your account. Never share it publicly or in client-side code.
                   </AlertDescription>
                 </Alert>
 
-                <div className="flex items-center space-x-2">
-                  <div className="relative grow">
-                    <Input value={maskApiKey(apiKey)} readOnly className="pr-24 font-mono text-sm border-purple-200" />
-                    <div className="absolute inset-y-0 right-0 flex items-center">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-full px-3 text-xs text-purple-600"
-                        onClick={() => setShowApiKey(!showApiKey)}
-                      >
-                        {showApiKey ? "Hide" : "Show"}
-                      </Button>
-                    </div>
-                  </div>
+                <div className="flex items-center gap-2">
                   <Button
                     variant="ghost"
-                    size="icon"
-                    onClick={handleCopyApiKey}
-                    className="shrink-0 text-purple-600 hover:bg-purple-50"
+                    className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-0 h-auto font-medium"
+                    onClick={() => window.open('https://luren-documentation.vercel.app/apikey', '_blank')}
                   >
-                    {apiKeyCopied ? <Check className="size-4 text-green-500" /> : <Copy className="size-4" />}
+                    <RefreshCw className="size-4 mr-2" />
+                    Create Your Own New Key
                   </Button>
                 </div>
-
-                <Button
-                  variant="ghost"
-                  onClick={handleRegenerateApiKey}
-                  className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 p-0 h-auto font-medium"
-                >
-                  <RefreshCw className="size-4 mr-2" />
-                  Regenerate API Key
-                </Button>
               </CardContent>
-              <CardFooter className="flex flex-col items-start pt-4 border-t border-purple-50">
-                <h4 className="font-medium mb-2 text-purple-600">API Usage</h4>
-                <div className="w-full bg-purple-100 rounded-full h-2.5">
-                  <div className="bg-purple-600 h-2.5 rounded-full w-[45%]"></div>
+              <CardFooter className="flex flex-col items-start pt-4 border-t border-blue-50">
+                <h4 className="font-medium mb-2 text-blue-600">API Usage</h4>
+                <div className="w-full bg-blue-100 rounded-full h-2.5">
+                  <div className="bg-blue-600 h-2.5 rounded-full w-[45%]"></div>
                 </div>
                 <p className="text-sm text-gray-500 mt-2">45% of your monthly API quota used (4,500/10,000 requests)</p>
               </CardFooter>
@@ -324,9 +302,9 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
           {/* Support Tab */}
           <TabsContent value="support">
             <div className="grid gap-6 md:grid-cols-2">
-              <Card className="border-purple-100">
-                <CardHeader className="border-b border-purple-50">
-                  <CardTitle className="text-purple-600">Contact Support</CardTitle>
+              <Card className="border-blue-100">
+                <CardHeader className="border-b border-blue-50">
+                  <CardTitle className="text-blue-600">Contact Support</CardTitle>
                   <CardDescription>Get help from our support team.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4 pt-6">
@@ -335,18 +313,17 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                   </p>
                   <Button
                     variant="ghost"
-                    className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 p-0 h-auto font-medium"
-                    onClick={() => setIsSupportChatOpen(true)}
+                    className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-0 h-auto font-medium"
+                    onClick={() => window.open('https://support-lurenai.vercel.app', '_blank')}
                   >
-                    <LifeBuoy className="size-4 mr-2" />
                     Contact Support
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="border-purple-100">
-                <CardHeader className="border-b border-purple-50">
-                  <CardTitle className="text-purple-600">Documentation</CardTitle>
+              <Card className="border-blue-100">
+                <CardHeader className="border-b border-blue-50">
+                  <CardTitle className="text-blue-600">Documentation</CardTitle>
                   <CardDescription>Learn how to use Luren AI effectively.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4 pt-6">
@@ -355,7 +332,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                   </p>
                   <Button
                     variant="ghost"
-                    className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 p-0 h-auto font-medium"
+                    className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-0 h-auto font-medium"
                     onClick={() => window.open('https://luren-documentation.vercel.app', '_blank')}
                   >
                     View Documentation
@@ -379,7 +356,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
                 <Button
                   variant="ghost"
                   onClick={() => setShowDeleteConfirm(false)}
-                  className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 p-0 h-auto font-medium"
+                  className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-0 h-auto font-medium"
                 >
                   Cancel
                 </Button>
