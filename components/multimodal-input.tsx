@@ -15,6 +15,7 @@ import {
 } from 'react';
 import { toast } from 'sonner';
 import { useLocalStorage, useWindowSize } from 'usehooks-ts';
+import { useArtifactSelector } from '@/hooks/use-artifact';
 
 import { ArrowUpIcon, StopIcon } from './icons';
 import { ArrowUp, Square, Paperclip, Search, Lightbulb } from 'lucide-react';
@@ -23,6 +24,7 @@ import { Button } from './ui/button';
 import { SearchModeToggle } from './search-mode-toggle'
 import { Textarea } from './ui/textarea';
 import { SuggestedActions } from './suggested-actions';
+import { DeepSearchToggle } from './deep-search-toggle';
 import equal from 'fast-deep-equal';
 import { UseChatHelpers, UseChatOptions } from '@ai-sdk/react';
 
@@ -55,6 +57,7 @@ function PureMultimodalInput({
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
+  const isArtifactVisible = useArtifactSelector((state) => state.isVisible);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -182,12 +185,13 @@ function PureMultimodalInput({
   );
 
   return (
-    <div className="flex flex-col gap-2 max-w-3xl mx-auto w-full">
+    
+    <div className={`flex flex-col gap-2 max-w-3xl mx-auto w-full ${messages.length === 0 ? 'mb-[400px]' : ''} ${isArtifactVisible ? 'mr-[400px]' : ''}`}>
       <div className="relative w-full flex flex-col gap-4 rounded-[30px] bg-white shadow-lg border border-gray-200">
         <Textarea
           data-testid="multimodal-input"
           ref={textareaRef}
-          placeholder="What's on your mind?"
+          placeholder="What's up?"
           value={input}
           onChange={handleInput}
           className={cx(
@@ -213,10 +217,10 @@ function PureMultimodalInput({
           }}
         />
 
-        <div className="absolute bottom-0 p-3 w-full flex flex-row justify-between items-center">
-          <div className="flex gap-2">
+        <div className="absolute bottom-0 p-2 w-full flex flex-row justify-between items-center">
+          <div className="flex items-center">
             <Button
-              className="rounded-full p-2 h-fit text-gray-500 mt-0.5 "
+              className="rounded-full border border-gray-200 size-9 flex items-center justify-center text-gray-600 hover:bg-gray-50 hover:text-gray-600"
               variant="ghost"
               onClick={(event) => {
                 event.preventDefault();
@@ -224,11 +228,10 @@ function PureMultimodalInput({
               }}
               disabled={status !== 'ready'}
             >
-              <Paperclip className="size-5" />
+              <Paperclip className="size-12" />
             </Button>
-            <SearchModeToggle />
-
-
+            <SearchModeToggle  />
+            <DeepSearchToggle />
           </div>
 
           <div>
@@ -305,15 +308,15 @@ function PureStopButton({
   return (
     <Button
       data-testid="stop-button"
-      variant={undefined} // <== отключаем вариант
-      className="rounded-full p-2 h-fit bg-black text-white hover:text-white"
+      variant={undefined}
+      className="rounded-full mr-1 mt-2 size-8 flex items-center justify-center bg-black text-white hover:bg-black/90 disabled:opacity-50 disabled:bg-black"
       onClick={(event) => {
         event.preventDefault();
         stop();
         setMessages((messages) => messages);
       }}
     >
-      <StopIcon size={6} />
+      <StopIcon size={7} />
     </Button>
   );
 }
@@ -331,14 +334,14 @@ function PureSendButton({
   return (
     <Button
       data-testid="send-button"
-      className="rounded-full bg-black text-white p-2 h-fit"
+      className="rounded-full mr-1 mt-2 size-8 flex items-center justify-center bg-black text-white hover:bg-black/90 disabled:opacity-50 disabled:bg-black"
       onClick={(event) => {
         event.preventDefault();
         submitForm();
       }}
       disabled={input.length === 0 || uploadQueue.length > 0}
     >
-      <ArrowUp className="bg-black text-white size-6" strokeWidth={3} />
+      <ArrowUp className="size-5" strokeWidth={3} />
     </Button>
   );
 }

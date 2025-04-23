@@ -23,7 +23,7 @@ export default function AnimatedGradient() {
     
     // Create gradient points
     const gradientPoints = [
-      { x: canvas.width * 0.1, y: canvas.height * 0.1, radius: canvas.width * 0.4, color: 'rgba(216, 180, 254, 0.3)' }, // Purple
+      { x: canvas.width * 0.1, y: canvas.height * 0.1, radius: canvas.width * 0.4, color: 'rgba(216, 180, 254, 0.3)' }, // blue
       { x: canvas.width * 0.9, y: canvas.height * 0.9, radius: canvas.width * 0.4, color: 'rgba(244, 114, 182, 0.3)' }, // Pink
     ];
     

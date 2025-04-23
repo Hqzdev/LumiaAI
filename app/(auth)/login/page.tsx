@@ -63,14 +63,14 @@ export default function Page() {
           <h3 className="text-xl font-semibold text-gray-900">Sign In</h3>
           <p className="text-sm text-gray-500">
             Use your email and{' '}
-            <span className="text-purple-600 font-medium">password</span> to
+            <span className="text-blue-600 font-medium">password</span> to
             sign in
           </p>
         </div>
         <AuthForm action={handleSubmit} defaultEmail={email}>
           <SubmitButton
             isSuccessful={isSuccessful}
-            className="text-purple-600 hover:text-purple-600 transition-all duration-200 hover:scale-110"
+            className="text-blue-600 hover:text-blue-600 transition-all duration-200 hover:scale-110"
           >
             Sign in
           </SubmitButton>
@@ -78,7 +78,7 @@ export default function Page() {
             {"Don't have an account? "}
             <Link
               href="/register"
-              className="font-medium text-purple-600 hover:text-purple-500 transition-colors"
+              className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
             >
               Sign up
             </Link>

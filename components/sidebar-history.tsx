@@ -213,12 +213,13 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
       <SidebarGroup>
         <SidebarGroupContent>
           <div className="px-2 text-zinc-500 w-full flex flex-row justify-center items-center text-sm gap-2">
-            Your conversations will appear here once you start chatting!
+            Start a chat to see your conversation history here!
           </div>
         </SidebarGroupContent>
       </SidebarGroup>
     );
   }
+  
 
   const groupChatsByDate = (chats: Chat[]): GroupedChats => {
     const now = new Date();
@@ -393,7 +394,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
 
           <DialogFooter>
             <Button
-              className="text-gray-500 hover:text-purple-600 bg-white hover:bg-white rounded-lg"
+              className="text-gray-500 hover:text-blue-600 bg-white hover:bg-white rounded-lg"
               onClick={() => setIsDeleteDialogOpen(false)}
             >
               Cancel

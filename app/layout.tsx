@@ -7,7 +7,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
-  title: 'Lumia A.I',
+  title: 'Lumia',
   description: 'The strongest A.I assistant',
 };
 

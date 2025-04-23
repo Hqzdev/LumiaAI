@@ -534,24 +534,27 @@ export const ArrowUpIcon = ({ size = 16 }: { size?: number }) => {
   );
 };
 
-export const StopIcon = ({ size = 16 }: { size?: number }) => {
+export const StopIcon = ({ size = 16, radius = 2 }: { size?: number; radius?: number }) => {
   return (
     <svg
       height={size}
       viewBox="0 0 16 16"
       width={size}
       style={{ color: 'currentcolor' }}
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M3 3H13V13H3V3Z"
+      <rect
+        x="3"
+        y="3"
+        width="10"
+        height="10"
+        rx={radius}
+        ry={radius}
         fill="currentColor"
       />
     </svg>
   );
 };
-
 export const PaperclipIcon = ({ size = 16 }: { size?: number }) => {
   return (
     <svg

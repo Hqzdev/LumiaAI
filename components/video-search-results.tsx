@@ -107,7 +107,7 @@ export function VideoSearchResults({ results }: VideoSearchResultsProps) {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Play className="size-4 text-purple-600" />
+                    <Play className="size-4 text-blue-600" />
                     <span className="text-sm text-gray-500">Watch Video</span>
                   </div>
                 </CardContent>

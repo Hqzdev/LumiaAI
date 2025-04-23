@@ -47,7 +47,7 @@ export function PureMessageActions({
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              className="py-1 px-2 h-fit text-gray-600 hover:text-purple-500"
+              className="py-1 px-2 h-fit text-gray-600 hover:text-blue-500"
               variant="ghost"
               onClick={async () => {
                 const textFromParts = message.parts
@@ -64,7 +64,7 @@ export function PureMessageActions({
                 }
               }}
             >
-              <Files className="size-3 text-gray-500 hover:text-purple-600" />
+              <Files className="size-3 text-gray-500 hover:text-blue-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Copy</TooltipContent>
@@ -76,7 +76,7 @@ export function PureMessageActions({
           <TooltipTrigger asChild>
             <Button
               data-testid="message-upvote"
-              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent hover:text-purple-600 !pointer-events-auto"
+              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent hover:text-blue-600 !pointer-events-auto"
               disabled={vote?.isUpvoted}
               variant="ghost"
               onClick={async () => {
@@ -119,7 +119,7 @@ export function PureMessageActions({
                 });
               }}
             >
-              <ThumbsUp className="size-3 text-gray-500 hover:text-purple-600" />
+              <ThumbsUp className="size-3 text-gray-500 hover:text-blue-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Like</TooltipContent>
@@ -131,7 +131,7 @@ export function PureMessageActions({
           <TooltipTrigger asChild>
             <Button
               data-testid="message-downvote"
-              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent hover:text-purple-600 !pointer-events-auto"
+              className="py-1 px-2 h-fit text-muted-foreground hover:bg-transparent hover:text-blue-600 !pointer-events-auto"
               variant="ghost"
               disabled={vote && !vote.isUpvoted}
               onClick={async () => {
@@ -174,7 +174,7 @@ export function PureMessageActions({
                 });
               }}
             >
-              <ThumbsDown className="size-3 text-gray-500 hover:text-purple-600" />
+              <ThumbsDown className="size-3 text-gray-500 hover:text-blue-600" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Dislike</TooltipContent>

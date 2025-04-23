@@ -14,7 +14,7 @@ const toggleVariants = cva(
         default:
           'bg-transparent data-[state=on]:bg-accent data-[state=on]:text-accent-foreground',
         outline:
-          ' hover:text-purple-600 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground'
+          ' hover:text-blue-600 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground'
       },
       size: {
         default: 'h-10 px-3 min-w-10',
