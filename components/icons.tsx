@@ -732,33 +732,71 @@ export const SummarizeIcon = ({ size = 16 }: { size?: number }) => (
   </svg>
 );
 
-export const SidebarLeftIcon = ({ size = 16 }: { size?: number }) => (
+export const SidebarLeftIcon = ({ size = 22, color = '#6B7280' }: { size?: number; color?: string }) => (
   <svg
-    height={size}
-    strokeLinejoin="round"
-    viewBox="0 0 16 16"
     width={size}
-    style={{ color: 'currentcolor' }}
+    height={size}
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ color }}
   >
-    <rect x="0" y="1" width="16" height="14" rx="4" fill="currentColor" />
+    {/* Внешний скруглённый прямоугольник */}
+    <rect
+      x="6"
+      y="6"
+      width="52"
+      height="52"
+      rx="15"
+      ry="15"
+      stroke="currentColor"
+      strokeWidth="6"
+      fill="none"
+    />
+
+    {/* Вертикальная линия на 40% ширины */}
+    <line
+      x1="26.8"
+      y1="6"
+      x2="26.8"
+      y2="58"
+      stroke="currentColor"
+      strokeWidth="6"
+    />
+
+    <circle cx="16" cy="19" r="3.5" fill="currentColor" />
+    <circle cx="16" cy="31" r="3.5" fill="currentColor" />
   </svg>
 );
 
+
 export const PlusIcon = ({ size = 16 }: { size?: number }) => (
   <svg
-    height={size}
-    strokeLinejoin="round"
-    viewBox="0 0 16 16"
-    width={size}
-    style={{ color: 'currentcolor' }}
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M8.75 1.75V1H7.25V1.75V6.75H2.25H1.5V8.25H2.25H7.25V13.25V14H8.75V13.25V8.25H13.75H14.5V6.75H13.75H8.75V1.75Z"
-      fill="currentColor"
-    />
-  </svg>
+  width={size}
+  height={size}
+  viewBox="0 0 64 64"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  style={{ color: 'currentcolor' }}
+>
+  {/* Основной квадрат со скруглениями */}
+  <rect
+    x="4"
+    y="4"
+    width="56"
+    height="56"
+    rx="10"
+    ry="10"
+    fill="currentColor"
+  />
+  {/* "Дырка" — круг в правом верхнем углу */}
+  <circle
+    cx="50"
+    cy="14"
+    r="6"
+    fill="white"
+  />
+</svg>
 );
 
 export const CopyIcon = ({ size = 16 }: { size?: number }) => (

@@ -7,7 +7,7 @@ import { useWindowSize } from 'usehooks-ts';
 import { ModelSelector } from '@/components/model-selector';
 import { SidebarToggle } from '@/components/sidebar-toggle';
 import { Button } from '@/components/ui/button';
-import { PlusIcon, VercelIcon } from './icons';
+import { MessageSquareDiff } from 'lucide-react';
 import { useSidebar } from './ui/sidebar';
 import { memo } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
@@ -38,13 +38,13 @@ function PureChatHeader({
           <TooltipTrigger asChild>
             <Button
               variant="outline"
-              className="order-2 md:order-1 px-4 py-2 md:h-fit ml-auto md:ml-0 text-lg"
+              className="p-0 h-[38px] w-[38px] rounded-xl [&_svg]:size-[22px] text-[#6B7280] ${className}"
               onClick={() => {
                 router.push('/');
                 router.refresh();
               }}
             >
-              <PlusIcon size={20} />
+              <MessageSquareDiff />
             </Button>
           </TooltipTrigger>
           <TooltipContent>New Chat</TooltipContent>
