@@ -23,7 +23,7 @@ export function SidebarToggle({
           variant="outline"
           className="md:px-2 md:h-fit"
         >
-          <SidebarLeftIcon size={16} />
+          <SidebarLeftIcon size={48}/>
         </Button>
       </TooltipTrigger>
       <TooltipContent align="start">Toggle Sidebar</TooltipContent>

@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { getCookie, setCookie } from '@/lib/utils/cookies'
 import { Telescope } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Toggle } from '@/components/ui/toggle'
 import {
   Tooltip,
@@ -9,14 +9,13 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 
-export function SearchModeToggle() {
-  const [isSearchMode, setIsSearchMode] = useState(true)
-
+export function SearchModeToggle({ isSearchMode, setIsSearchMode }: { isSearchMode: boolean; setIsSearchMode: (v: boolean) => void }) {
   useEffect(() => {
     const savedMode = getCookie('search-mode')
     if (savedMode !== null) {
       setIsSearchMode(savedMode === 'true')
     }
+    // eslint-disable-next-line
   }, [])
 
   const handleSearchModeChange = (pressed: boolean) => {
@@ -32,16 +31,18 @@ export function SearchModeToggle() {
           pressed={isSearchMode}
           onPressedChange={handleSearchModeChange}
           className={cn(
-            'gap-0.5 px-3 -py-1 text-muted-foreground bg-background rounded-full ml-2 border border-gray-200',
-            'data-[state=on]:bg-blue-100 data-[state=on]:text-blue-600',
-            'hover:bg-blue-100 hover:text-blue-600 transition-all duration-300',
+            'gap-0.5 px-3 py-1 rounded-full ml-2 border transition-all duration-300',
+            isSearchMode
+              ? 'bg-blue-100 text-blue-600 border-blue-100 hover:bg-blue-200 hover:text-blue-700'
+              : 'bg-background text-muted-foreground border-gray-200',
+            ''
           )}
         >
           <Telescope className="size-4" />
           <span className="text-xs ml-1">Research</span>
         </Toggle>
       </TooltipTrigger>
-      <TooltipContent side="bottom" className="text-xs">
+      <TooltipContent side="top">
         Toggle research mode
       </TooltipContent>
     </Tooltip>
